@@ -153,7 +153,7 @@ box-shadow: 0px 0px 3px grey !important;
     width: 24px;
     height: 24px;
     position: absolute;
-    right: 9px;
+    right: 10px;
     top: 9px;
 }
 
@@ -203,6 +203,12 @@ box-shadow: 0px 0px 3px grey !important;
     font-size: 20px;
     
 }
+.locqtion,.date{
+    color: rgba(0,47,52,.64) !important;
+    margin-bottom: -15px !important;
+    font-size: 10px;
+
+}
 .c-text{
     color: rgba(0,47,52,.64) !important;
     font-size: 14px !important;
@@ -210,7 +216,8 @@ box-shadow: 0px 0px 3px grey !important;
     overflow: hidden;
     text-align: left;
     display: block;
-    padding-top: -100px !important;
+    margin-top: -12px !important;
+    /* padding-bottom: 10px !important; */
 }
 
 
