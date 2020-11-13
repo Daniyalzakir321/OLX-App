@@ -15,26 +15,36 @@ cursor: pointer;
 }
 
 #magnifierblack{
+    height: 25px;
 position: absolute;
-left: 0;
-visibility: visible !important;
+/* top: 0; */
+margin-top: 12px;
+margin-left:-90px !important;
+/* left: -100 !important; */
 }
 
-select{
+#select{
 border-color: black !important;
 border:2px solid black !important;
-
+/* font-size: large !important; */
+text-indent: 0.7cm;
+width: 110% !important;
 }
-select:focus{
+#select:focus{
 border:none !important;
+}
+#option{
+    text-indent: 3cm !important;
 }
 
 #search{
-width: 92%;
+margin-left: 7px;
+width: 90%;
 border-color: black !important;
 border:2px solid black !important;
 border-top-right-radius: 0px !important;
 border-bottom-right-radius: 0px !important;
+/* font-size: large !important; */
 }
 #search:focus{
 border:none !important;
@@ -51,11 +61,7 @@ border-bottom-left-radius: 0px !important;
     height: 23px;
     width: 22px;
 padding-bottom:2px;
-
 }
-
-
-
 
 
 
@@ -64,10 +70,16 @@ padding-top: 10px;
 font-size: large ;
 font-weight: 650;
 text-decoration: underline;
+color: #002f34 !important;
+
 }
 #login:hover{
 text-decoration: none;
 cursor: pointer;
+color: #002f34 !important;
+}
+#login:focus{
+color: #002f34 !important;
 }
 
 #sell-img{
@@ -76,14 +88,13 @@ padding-top: 0px;
 margin-left: -50px;
 cursor: pointer;
 font-size:22px !important;
-
 }
 
 #sell-img:hover{
-width: 107px;
-margin-left: -48px;
-margin-right: 5px;
+width: 113px;
+margin-top: -2px;
 }
+
 
 
 
@@ -92,6 +103,7 @@ margin-right: 5px;
 text-align: center !important;
 width: 100% !important;
 }
+
 
 
 /* Categories */
@@ -424,3 +436,106 @@ font-family: Arial,Helvetica,sans-serif;
 background-color: #002f34 !important;
 font-size: 12px;
 }
+
+
+
+/* POST YOUR ADS */
+
+
+.center{
+   text-align: center; 
+  padding-bottom: 10px;
+
+}
+
+.center>img{
+    height: 150px !important;
+ }
+
+ h1{
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* font-size: 2em; */
+    font-weight: bold;   
+     color: #002f34;   
+
+ }
+
+ .bg-color-for-ads{
+background-color: #f8f8f8;
+border-radius: 10px;
+border: 1px solid #e2e2e2;
+box-shadow: 0px 0px 3px grey;
+
+
+
+}
+
+.row>label{
+font-weight: 700;
+color: #002f34;
+}
+
+
+.POSTADS{
+    background-Color:#002f34 !important;
+    font-Weight: 600 !important;
+    width: 49.8% !important;
+    margin-top: 15px;
+
+}
+
+#arrow{
+  height: 25px;
+  margin-top: 13px;
+  margin-left: 15px;  
+  cursor: pointer;
+  margin-bottom: 15px;
+
+}
+
+.head-again{
+border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+
+
+
+
+/* SIGNIN  SIGNUP */
+
+#pos-ads{
+    height: 200px !important;
+margin-right: 10px;
+cursor: pointer;
+}
+
+#login-signup{
+    text-align: center !important;
+width:27% !important;
+border: 1px solid rgb(218, 218, 218);
+border-radius:5px;
+box-shadow: 0px 0px 5px grey;
+}
+.POSTDS{
+    margin-bottom: 8px;
+
+    background-Color:#002f34 !important;
+    font-Weight: 600 !important;
+    width: 100% !important;
+    /* margin-top: 15px; */
+}
+
+#cross{
+ float: right; 
+ height: 19px;
+ margin:10px  
+}
+
+#cross:hover{
+    float: right; 
+    height: 24px;
+    margin:7px  
+   }

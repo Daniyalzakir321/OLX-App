@@ -1,0 +1,18 @@
+<svg width="165.332992553711" height="165.332992553711" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="-0.007476" y1="1.36959" x2="0.500006" x1="0.500006" id="def1">
+   <stop stop-opacity="0.227451" stop-color="#FFFFFF" offset="0"/>
+   <stop stop-opacity="0.188235" stop-color="#FFFFFF" offset="0.503705"/>
+   <stop stop-opacity="0.152941" stop-color="#FFFFFF" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_3" fill="url(#def1)" d="m133.283,34.5333c0,16.0107 -23.072,28.992 -51.5323,28.992c-28.4587,0 -51.528,-12.9813 -51.528,-28.992c0,-16.0106 23.0693,-28.99198 51.528,-28.99198c28.4603,0 51.5323,12.98138 51.5323,28.99198z"/>
+  <path stroke="null" id="svg_5" fill="#002f34" d="m66.627111,149.024621l-66.662197,-67.69882c22.220735,-22.57003 46.365752,-45.79153 68.586488,-68.36157l42.045721,0.65147l-51.345005,51.49914l101.264184,-0.651465l-0.41774,33.148204l-100.495466,-0.041639l51.077799,51.5415l-44.053784,-0.08682z"/>
+ </g>
+</svg>

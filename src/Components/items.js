@@ -32,8 +32,8 @@ class ITEMS extends React.Component {
                 {/* <input type="text" id="a"/>
                 <input type="text" id="b"/>
                 <input type="text" id="c"/>
-                <input type="text" id="d"/> */}
-                {/* <button onClick={adding()}>clivvk</button> */}
+                <input type="text" id="d"/> 
+                <button onClick={adding()}>clivvk</button>  */}
                 
                 <div className=" container-fluid " id="card-align">
                     <p id="items">Fresh recommendations</p>
