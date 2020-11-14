@@ -1,7 +1,6 @@
 import React from 'react';
 import heart from '../images/heart.svg';
 import App from '../App';
-import APPROUTER from './Router';
 import { Link } from 'react-router-dom'
 import NAVBARS from './navbar';
 import CATEGORIES from './categories';
@@ -9,8 +8,6 @@ import FOOTERTOP from './footertop';
 import FOOTER from './footer';
 import FOOTERBOTTOM from './footerbottom';
 import ITEMS from './items';
-import { provider } from './firebase'
-import { Image } from 'react-bootstrap'
 import DEAR from '../images/dear.webp';
 import PHONE from '../images/phone.svg';
 
@@ -62,7 +59,7 @@ class ITEMDETAILS extends React.Component {
 
                                     <img className="card-heart" src={heart} alt="heart" />
 
-                                    <h5 className="card-title card-price">Rs 360,000</h5>
+                                    <h5 className="card-title card-price">Rs 590,000</h5>
                                     <p className="card-text card-details"  >Brand New Furnished Apartment Available For Rent In Bahria Town Karachi</p>
                                     <div>
                                         <span className="float-left card-location">BAHADURABAD KARACHI</span>

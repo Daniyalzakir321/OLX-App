@@ -2,11 +2,8 @@ import React from 'react';
 import '../App.css'
 import { Link } from "react-router-dom";
 // Images
-import ARROW from '../arrow.svg';
-import LOGO from '../images/olx-logo.png';
 import POSTA from '../images/olx-post-ads.png';
 import CROSS from '../cross.svg';
-import { Form } from 'react-bootstrap';
 // import { auth, provider, db } from './firebase';
 import { AUTH, FIREBASE } from './firebase';
 

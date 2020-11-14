@@ -1,10 +1,9 @@
 import React from 'react';
 import '../App.css'
-import olxslide from '../images/head.jpg';
 import olx1 from '../images/olx1.png';
 import olx2 from '../images/olx2.png';
 import olx3 from '../images/olx3.png';
-import {Link} from 'react-router-dom'
+
 
 
 class FOOTERTOP extends React.Component {

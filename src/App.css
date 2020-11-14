@@ -75,8 +75,8 @@ text-decoration: underline;
 color: #002f34 !important;
 
 }
-#login:hover{
-text-decoration: none;
+#login:hover,.log-link:hover{
+text-decoration: none !important;
 cursor: pointer;
 color: #002f34 !important;
 }
@@ -554,12 +554,10 @@ box-shadow: 0px 0px 5px grey;
 
    .image-container{
      cursor: pointer;
-     position: absolute;
+     /* position: absolute; */
      height: 100%;
      object-fit: contain;
      width: 100%;
-     margin: 0;
-     padding: 0;
      height: 480px;
      cursor: pointer;
      display: block;
@@ -673,8 +671,6 @@ font-weight: 600 !important;
     position: absolute;
     right: 15px;
     top: 16px;
-
-
 }
 
 
@@ -701,7 +697,7 @@ font-weight: 600 !important;
 }
   #phone{
     height: 29px;  
-    padding-left: 100px;
+    /* padding-left: 100px; */
     margin-top: 4px;
   }
   .card-border{
@@ -717,18 +713,7 @@ font-weight: 600 !important;
     padding-left: 10px;
 
 }
-.margin{
-    margin-left: -5px;
 
-
-}
 .for-margin{
-    padding-left:20px ;
-
-
-}
-
-.des{
-    margin-left: -5px;
-    margin-top: 20px;
+padding-left:15px ;
 }

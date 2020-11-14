@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css'
-import olx1 from '../images/olx1.png';
 import olx2 from '../images/olx2.png';
 import olx3 from '../images/olx3.png';
 import facebook from '../images/footer-icons/facebook.svg';

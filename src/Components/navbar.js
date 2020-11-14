@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 // Files
 import App from '../App';
-import APPROUTER from './Router';
 // Images
 import logo from '../images/olx-logo.png';
 import sell from '../images/sell-button.PNG';
@@ -44,8 +43,8 @@ class NAVBARS extends React.Component {
               </form>
             </div>
 
-            <div className="col-md-1 login">
-              <Link to="/login-signup">
+            <div className="col-md-1 login" >
+              <Link to="/login-signup" className="log-link">
                 <p id="login" >Login</p>
               </Link>
 
@@ -53,7 +52,7 @@ class NAVBARS extends React.Component {
 
             <div className="col-md-1">
 
-              <Link to="/postyourads">
+              <Link to="/postyourads" >
                 <img src={sell} alt="" id="sell-img" />
               </Link>
 
