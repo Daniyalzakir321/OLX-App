@@ -18,7 +18,7 @@ import ITEMDETAILS from './Components/item-details';
 class APP extends React.Component {
   render() {
     return (
-      <div>
+      <div className="overflow-x">
         <Router>
           <Switch>
 

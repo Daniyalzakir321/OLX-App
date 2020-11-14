@@ -1,4 +1,6 @@
-
+.overflow-x{
+    overflow: hidden;
+}
 .head{
 background-color: #f7f8f8;
 padding-top: 10px;
@@ -309,6 +311,7 @@ text-shadow: 1px 1px 2px rgb(204, 204, 204);
 #foottop{
     background-color:#f3f6f7;
     width: 100%;
+    overflow-x: hidden !important;
 }
 
 .i-f{
@@ -433,7 +436,7 @@ background-color: #002f34 !important;
 font-family: Arial,Helvetica,sans-serif;
 color: white !important;
 text-decoration: wavy;
-
+overflow-x: hidden !important;
 }
 #aa{
 font-family: Arial,Helvetica,sans-serif;
