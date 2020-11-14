@@ -1,21 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.20d79515.chunk.css",
-    "main.js": "/static/js/main.c262fe1b.chunk.js",
-    "main.js.map": "/static/js/main.c262fe1b.chunk.js.map",
+    "main.css": "/static/css/main.8b530424.chunk.css",
+    "main.js": "/static/js/main.aee081c6.chunk.js",
+    "main.js.map": "/static/js/main.aee081c6.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.8c17bf89.js",
     "runtime-main.js.map": "/static/js/runtime-main.8c17bf89.js.map",
     "static/css/2.2a86faee.chunk.css": "/static/css/2.2a86faee.chunk.css",
-    "static/js/2.867855c5.chunk.js": "/static/js/2.867855c5.chunk.js",
-    "static/js/2.867855c5.chunk.js.map": "/static/js/2.867855c5.chunk.js.map",
+    "static/js/2.a9e6c878.chunk.js": "/static/js/2.a9e6c878.chunk.js",
+    "static/js/2.a9e6c878.chunk.js.map": "/static/js/2.a9e6c878.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.da0a4e77646c15ba9de2f64a61167439.js": "/precache-manifest.da0a4e77646c15ba9de2f64a61167439.js",
+    "precache-manifest.bbe4bbe7519b620ad66cbaffa47e2907.js": "/precache-manifest.bbe4bbe7519b620ad66cbaffa47e2907.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.2a86faee.chunk.css.map": "/static/css/2.2a86faee.chunk.css.map",
-    "static/css/main.20d79515.chunk.css.map": "/static/css/main.20d79515.chunk.css.map",
-    "static/js/2.867855c5.chunk.js.LICENSE.txt": "/static/js/2.867855c5.chunk.js.LICENSE.txt",
+    "static/css/main.8b530424.chunk.css.map": "/static/css/main.8b530424.chunk.css.map",
+    "static/js/2.a9e6c878.chunk.js.LICENSE.txt": "/static/js/2.a9e6c878.chunk.js.LICENSE.txt",
     "static/media/arrow.svg": "/static/media/arrow.f9594f0f.svg",
     "static/media/cross.svg": "/static/media/cross.fdac3402.svg",
+    "static/media/dear.webp": "/static/media/dear.a6cf6b89.webp",
     "static/media/facebook.svg": "/static/media/facebook.8f5c88d8.svg",
     "static/media/head.jpg": "/static/media/head.3e0696c8.jpg",
     "static/media/heart.svg": "/static/media/heart.6f0ab147.svg",
@@ -24,6 +25,7 @@
     "static/media/magnifier-white.svg": "/static/media/magnifier-white.748ed964.svg",
     "static/media/olx-post-ads.png": "/static/media/olx-post-ads.df8c4b2b.png",
     "static/media/olx1.png": "/static/media/olx1.4cb8cbc4.png",
+    "static/media/phone.svg": "/static/media/phone.f7c40abf.svg",
     "static/media/sell-button.PNG": "/static/media/sell-button.2d9aba93.PNG",
     "static/media/twitter.svg": "/static/media/twitter.08e03a8e.svg",
     "static/media/youtube.svg": "/static/media/youtube.5969a6ed.svg"
@@ -31,8 +33,8 @@
   "entrypoints": [
     "static/js/runtime-main.8c17bf89.js",
     "static/css/2.2a86faee.chunk.css",
-    "static/js/2.867855c5.chunk.js",
-    "static/css/main.20d79515.chunk.css",
-    "static/js/main.c262fe1b.chunk.js"
+    "static/js/2.a9e6c878.chunk.js",
+    "static/css/main.8b530424.chunk.css",
+    "static/js/main.aee081c6.chunk.js"
   ]
 }

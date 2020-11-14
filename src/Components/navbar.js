@@ -15,10 +15,10 @@ class NAVBARS extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className="fixed-top">
 
-        <div className="container-fluid col-md-12 head">
-          <div className="row">
+        <div className="container-fluid col-md-12 head ">
+          <div className="row ">
 
             <div className="col-md-1">
                <Link to="/">

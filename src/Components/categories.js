@@ -4,7 +4,7 @@ import '../App.css'
 class CATEGORIES extends React.Component {
     render() {
         return (
-            <div>
+            <div className="">
                 <div className="container-fluid categories">
                     <a href="#"> <b>ALL CATEGORIES</b> </a>
 

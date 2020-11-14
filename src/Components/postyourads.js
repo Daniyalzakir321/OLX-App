@@ -113,7 +113,9 @@ class POSTYOURADS extends React.Component {
                                 <div className="form-group row">
                                     <label htmlFor="inputPassword3" className="col-sm-2 col-form-label"></label>
                                     <div className="col-sm-10">
-                                        <button type="submit" className="btn btn-secondary  POSTADS" >CANCEL</button>
+                                    <Link to="/">
+                                        <button type="button" className="btn btn-secondary  POSTADS" >CANCEL</button>
+                                    </Link>
                                         <button type="submit" className="btn btn-secondary float-right POSTADS" >POST AD</button>
 
                                     </div>
