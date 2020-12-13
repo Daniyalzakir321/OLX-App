@@ -15,7 +15,18 @@
    
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
-  
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "7ac208ed-78a8-4a16-8630-bbc1be90568e",
+          notifyButton: {
+            enable: true,
+          },
+        });
+      });
+    </script>
    
     <title>OLX - Buy and Sell for free any where in Pakistan with OLX... </title>
   </head>
