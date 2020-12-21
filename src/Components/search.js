@@ -3,13 +3,13 @@ import heart from '../images/heart.svg';
 import { db, fire } from './firebase';
 import { Link } from 'react-router-dom'
 
-export default function ITEMS() {
+export default function SEARCH({serch}) {
 
     const [itemData, setItemData] = useState([])
 
     useEffect(() => {
         // FIREBASE ANALYTICS
-        fire.analytics().logEvent({setName:'Home_Screen'})
+        fire.analytics().logEvent({setName:'FILTER_SCREEN'})
 
         db.collection("POST-YOUR-ADS").orderBy('TimeStamp', 'desc').onSnapshot(function (querySnapshot) {
             setItemData(
@@ -31,19 +31,30 @@ export default function ITEMS() {
     }, [])
     // console.log({ itemData })
 
+
+    const filterSearch = itemData.filter((f) => {
+        if(serch.length>0){
+        return f.p.toLowerCase().includes(serch.toLowerCase())
+        }
+       else
+        { console.log('No such items')}
+    })
+
+
     return (
-        <div>
+        <div style={{backgroundColor:'white', height:450, paddingTop: 50}} id="filter">
+        <h3 style={{textAlign:'left', marginTop: -50, padding: 10,}}>Search Result...</h3>
     
-            <div className=" container-fluid " id="card-align">
-                <p id="items">Fresh recommendations</p>
+            <div className=" container-fluid " id="card-align" >
+        
                 <div className="col-md-12 container-fluid ml-3 ">
                     <div className="row">
                         {/* =============== */}
                         <ul className="ul-for-card">
-                            {itemData.map((iData, index) => {
+                            {filterSearch.map((iData, index) => {
 
                                 return <li key={index}>
-                                    <Link to={{ pathname: "item-details", LinkData: [iData.i, iData.p] }} >
+                                    <Link to={{ pathname: "item-details", LinkData:itemData}} >
                                         <div className="card cccc" style={{ width: '18rem', }}>  <span id="featured">FEATURED</span><img className="heart" src={heart} alt="heart" />
                                             <div id="white-border">
                                                 <img className="card-img-top rounded mx-auto d-block" src={iData.i} alt="Card image cap" />

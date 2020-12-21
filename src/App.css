@@ -721,3 +721,10 @@ font-weight: 600 !important;
 .for-margin{
 padding-left:15px ;
 }
+
+
+/* FILTER */
+
+#filter{
+    border: 5px solid #e9e9e9;
+}

@@ -14,9 +14,9 @@ import PHONE from '../images/phone.svg';
 
 
 
-const ITEMDETAILS =(LinkData) => {
+const ITEMDETAILS =({LinkData}) => {
     console.log('Start',LinkData)
-    console.log(LinkData[0])
+    // console.log(LinkData[0])
         return (
             <div>
                 <NAVBARS />
