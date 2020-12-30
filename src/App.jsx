@@ -43,7 +43,7 @@ class APP extends React.Component {
               <POSTYOURADS />
             </Route>
 
-            <Route exact path="/item-details" component={ITEMDETAILS} >
+            <Route exact path="/item-details/:category/:id" component={ITEMDETAILS} >
               <ITEMDETAILS />
             </Route>
 
