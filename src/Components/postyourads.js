@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import {db} from './firebase';
+import { db } from './firebase';
 import firebase from 'firebase/app';
 import FOOTER from '../Components/footer';
 import FOOTERBOTTOM from '../Components/footerbottom';
 import ARROW from '../arrow.svg';
 import LOGO from '../images/olx-logo.png';
+import { useSelector } from 'react-redux'
 
+export default function POSTYOURADS(props) {
+    const data = useSelector(state => state.user)
+    const [userEmail, setUserEmail] = useState('')
+    console.log("data", data)
+    // if(!data.UserEmail){
+    //     setUserEmail(data.UserEmail)
+    // }
+    // else{
+    //     setUserEmail("Not Registered")
+    // }
 
-export default function POSTYOURADS() {
-
-    // const aa=()=>{
     const [name, setName] = useState('')
     const [category, setCategory] = useState('')
     const [price, setPrice] = useState('')
     const [image, setImage] = useState('')
     const [location, setLocation] = useState('')
     const [description, setDescription] = useState('')
-    // }
+    const [lat, setLat] = useState('')
+    const [long, setLong] = useState('')
+
 
     // Date Time
     var today = new Date();
@@ -38,10 +48,17 @@ export default function POSTYOURADS() {
             Location: location,
             Description: description,
             DateTime: dateTime,
+            Latitude: lat,
+            Longitude: long,
+            // UserEmail: userEmail,
             TimeStamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
             .then(() => {
                 console.log('Summited');
+                // if(!getLocation() && !lat && !long){
+                //     alert('✅ Please Enable Location')
+                // }
+                // else{
                 setName('')
                 setCategory('')
                 setPrice('')
@@ -49,6 +66,7 @@ export default function POSTYOURADS() {
                 setLocation('')
                 setDescription('')
                 alert('✅ Successfully Posted')
+                // }
             })
             .catch((error) => {
                 console.log(error.message);
@@ -57,6 +75,27 @@ export default function POSTYOURADS() {
 
     }
 
+
+
+    getLocation()
+
+    const x = []
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        var latlon = position.coords.latitude + "," + position.coords.longitude;
+        var map = `https://maps.googleapis.com/maps/api/staticmap?center=
+      "+${latlon}+"&zoom=14&size=400x300&sensor=false&key=AIzaSyAZtQ4fjifW2oL2EV9bkH7DPnVxY8YsXsM`;
+        console.log("ll", latlon)
+        setLat(position.coords.latitude)
+        setLong(position.coords.longitude)
+    }
 
     return (
         <div>
@@ -78,11 +117,6 @@ export default function POSTYOURADS() {
                 </div>
             </div>
 
-
-
-
-
-
             <div className="container-fluid col-md-12">
                 <div className="col">
                     <br></br>    <br></br>
@@ -91,10 +125,7 @@ export default function POSTYOURADS() {
                         <h3 id="h1"><b>POST YOUR AD</b></h3>
                     </div>
 
-
-
                     <div className="container-fluid col-md-10 bg-color-for-ads ">
-
 
                         <form onSubmit={handleSumit}>
                             <br></br>
@@ -164,29 +195,19 @@ export default function POSTYOURADS() {
                                 </div>
                             </div>
 
-
-
                         </form>
 
-
-
                     </div>
-
                     <br></br>
                     <br></br>
                     <br></br>
-
-
-
                 </div>
             </div>
-
             <FOOTER />
             <FOOTERBOTTOM />
         </div>
     )
 }
-
 
 
 

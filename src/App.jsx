@@ -12,6 +12,8 @@ import LOADMORE from './Components/loadmore';
 import POSTYOURADS from './Components/postyourads';
 import SIGNIN from './Components/login-signup';
 import ITEMDETAILS from './Components/item-details';
+import USERLOGIN from './Components/user-login/user-login';
+import PAGENOTFOUND from './Components/page-not-found';
 
 
 
@@ -45,6 +47,18 @@ class APP extends React.Component {
 
             <Route exact path="/item-details/:category/:id" component={ITEMDETAILS} >
               <ITEMDETAILS />
+            </Route>
+
+            <Route exact path="/user-login" component={USERLOGIN} >
+              <USERLOGIN />
+            </Route>
+
+            <Route exact path="/user-login/:id" component={USERLOGIN} >
+              <USERLOGIN />
+            </Route>
+
+            <Route  component={PAGENOTFOUND} >
+              <PAGENOTFOUND />
             </Route>
 
           </Switch>

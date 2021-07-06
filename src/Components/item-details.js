@@ -11,8 +11,7 @@ import ITEMS from './items';
 import DEAR from '../images/dear.webp';
 import PHONE from '../images/phone.svg';
 import { db } from './firebase';
-
-
+import MapContainer from './map';
 
 const ITEMDETAILS = () => {
     // console.log('Start',LinkData)
@@ -97,10 +96,18 @@ const ITEMDETAILS = () => {
                                 </div>
                                 <br />
                             </div>
+
+                            <span>&nbsp;</span>
+                            <div className="col-md-12 card-border">
+                                <h5 className="card-title Seller-Description">Seller Description</h5>
+                            <div>
+                                <MapContainer style={{height:"100%", width:'90%'}}/>
+                            </div>
+                            </div>
+
                             <br />
 
                         </div>
-
                     </div>
                     <span>&nbsp;</span>
                     <div className="col-md-12 card-border des" >

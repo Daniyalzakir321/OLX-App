@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import '../App.css'
-import { Link } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 // Images
 import POSTA from '../images/olx-post-ads.png';
 import CROSS from '../cross.svg';
 // Firebase If using authentication you need to export [ FIRE ] from firebase.js
 import firebase from 'firebase/app';
 import { db, fire } from './firebase';
+// // Redux
+// import { connect } from 'react-redux';
+// import { increment, decrement, reset } from './actionCreators'
+import { useDispatch } from 'react-redux';
+import * as auth from './Store/action';
 
 
 export default function SIGNIN() {
+
+    const dispatch = useDispatch()
+    const history= useHistory()
 
     const googleAuthentication = () => {
         // Date Time
@@ -29,6 +37,8 @@ export default function SIGNIN() {
                 console.log(result.user.photoURL);
                 console.log(token);
                 
+      
+
                 if (result) {
                     db.collection('USER-DATA').doc(result.user.email).set({
                         UserName: result.user.displayName,
@@ -38,8 +48,22 @@ export default function SIGNIN() {
                         DateTime: dateTime,
                         TimeStamp: firebase.firestore.FieldValue.serverTimestamp()
                     })
-                } //if
 
+
+                    dispatch(auth.LoginUser({
+                        UserName: result.user.displayName,
+                        UserEmail: result.user.email,
+                        UserPhoto: result.user.photoURL,
+                        UserToken: token,
+                        DateTime: dateTime,
+                    })
+                    )
+
+                    history.push('./user-login')
+
+
+                } //if
+                // window.location='/user-login' //=========================
             })
             .catch(function (error) {
                 console.log(error.message);

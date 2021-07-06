@@ -9,13 +9,19 @@ import magnifierblack from '../images/magnifier-black.svg';
 import magnifierwhite from '../images/magnifier-white.svg';
 import SEARCH from './search'
 import {Form} from 'react-bootstrap'
-
+import {fire} from './firebase'
+import { useSelector } from 'react-redux'
 
 export default function NAVBARS() {
+  const data = useSelector(state => state.user)
 
+  
   const [serch, setSerch] = useState("")
 
-
+  const logout=()=>{
+    fire.auth().signOut()
+    console.log("logout")
+  }
 
   return (
     <div className="fixed-top">
@@ -55,10 +61,25 @@ export default function NAVBARS() {
 
 
           <div className="login Header__Login col-md-1" >
-            <Link to="/login-signup" className="log-link">
-              <p id="login" >Login</p>
-            </Link>
+          {(!data.UserPhoto)? <Link to="/login-signup" className="log-link"><p id="login" >Login</p></Link>
+            :
+            <div class="dropdown">
+                                {(data.UserPhoto)?<img src={data.UserPhoto} data-toggle="dropdown" style={{cursor:'pointer', height:45, borderRadius:50}} /> 
+                            :
+                            <Link to="/login-signup" className="log-link">
+                            <p id="login" >Login</p>
+                          </Link>    
+                            }
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{marginLeft:-30,marginTop:13, paddingRight:-20}}>
+                                    <Link class="dropdown-item" to="/user-login"  >{data.UserName}</Link>
+                                    <Link class="dropdown-item" href="#">Settings</Link>
+                                    <Link class="dropdown-item" onClick={()=> logout()}>LogOut</Link>
+                    </div>
           </div>
+          }
+          </div>
+
+          
 
           <div className="Header__Sell col-md-1">
             <Link to="/postyourads" >

@@ -38,7 +38,7 @@ export default function ITEMS() {
         <div>
 
             <div className=" container-fluid " id="card-align">
-                <p id="items">Fresh recommendations</p>
+               { <p id="items">Fresh recommendations</p>}
                 <div className="col-md-12 container-fluid ml-3 ">
                     <div className="row">
                         {/* =============== */}
