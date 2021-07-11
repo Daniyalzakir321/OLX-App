@@ -1,39 +1,44 @@
+import heart from '../images/heart.svg';
+import { db, fire } from './firebase';
+import { useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useHistory } from "react-router-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { db } from './firebase';
-import firebase from 'firebase/app';
+import { Link, useLocation, useParams, useHistory } from "react-router-dom";
 import FOOTER from '../Components/footer';
 import FOOTERBOTTOM from '../Components/footerbottom';
 import ARROW from '../arrow.svg';
 import LOGO from '../images/olx-logo.png';
-import { useSelector } from 'react-redux'
 import imageToBase64 from 'image-to-base64/browser';
 
 
-export default function POSTYOURADS(props) {
+export default function EDITYOURADS(props) {
     const data = useSelector(state => state.user)
-    const [userEmail, setUserEmail] = useState('')
     console.log("data", data)
-    const history=useHistory();
- 
+    const { id } = useParams();
+    console.log("id====", id)
+
     useEffect(() => {
-   if(data.UserEmail){
-        setUserEmail(data.UserEmail)
-    }
-    else{
-        setUserEmail("Not Registered")
-    }}, [])
+        db.collection("POST-YOUR-ADS").doc(id).onSnapshot(snapshot => (
+            setName(snapshot.data().Name),
+            setCategory(snapshot.data().Category),
+            setPrice(snapshot.data().Price),
+            setImageUpload(snapshot.data().Image),
+            setDescription(snapshot.data().Description),
+            setLoacations(snapshot.data().Location)
+        ))
+    }, [])
+
+
+    const history = useHistory()
 
     const [name, setName] = useState('')
     const [category, setCategory] = useState('')
     const [price, setPrice] = useState('')
     const [image, setImage] = useState([])
     const [imageUpload, setImageUpload] = useState([])
-    const [location, setLocation] = useState('')
     const [description, setDescription] = useState('')
     const [lat, setLat] = useState('')
     const [long, setLong] = useState('')
+    const [locations, setLoacations] = useState('')
 
     const uploadImage = (e) => {
         e.preventDefault()
@@ -42,7 +47,7 @@ export default function POSTYOURADS(props) {
         console.log('allfiles==Length=====>', file.length)
 
         if (file.length > 0 && file.length < 4) {
-        setImage(e.target.value)
+            setImage(e.target.value)
             for (var i = 0; i < file.length; i++) {
                 imageToBase64(file[i])
                     .then(res => {
@@ -85,20 +90,17 @@ export default function POSTYOURADS(props) {
         e.preventDefault()
         console.log(e)
 
-        db.collection('POST-YOUR-ADS').add({
+        db.collection('POST-YOUR-ADS').doc(id).update({
             Name: name,
             Category: category,
             Price: price,
             Image: imageUpload,
-            Location: location,
+            Location: locations,
             Description: description,
             DateTime: dateTime,
             Latitude: lat,
             Longitude: long,
-            UserEmail: userEmail,
-            UserName: (data.UserName),
-            UserPhoto:(data.UserPhoto),
-            TimeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+            // TimeStamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
             .then(() => {
                 console.log('Summited');
@@ -110,11 +112,12 @@ export default function POSTYOURADS(props) {
                 setCategory('')
                 setPrice('')
                 setImage('')
-                setLocation('')
                 setDescription('')
                 setImage([])
+                setLoacations('')
                 setImageUpload([])
-                alert('✅ Successfully Posted')
+                alert('✅ Successfully Updated')
+                // history.push('/user-login/edit')
                 history.goBack()
                 // }
             })
@@ -125,40 +128,18 @@ export default function POSTYOURADS(props) {
 
     }
 
-
-
-    getLocation()
-
-    const x = []
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x = "Geolocation is not supported by this browser.";
-        }
-    }
-
-    function showPosition(position) {
-        var latlon = position.coords.latitude + "," + position.coords.longitude;
-        var map = `https://maps.googleapis.com/maps/api/staticmap?center=
-      "+${latlon}+"&zoom=14&size=400x300&sensor=false&key=AIzaSyAZtQ4fjifW2oL2EV9bkH7DPnVxY8YsXsM`;
-        console.log("ll", latlon)
-        setLat(position.coords.latitude)
-        setLong(position.coords.longitude)
-    }
-
     return (
         <div>
             <div className="container-fluid col-md-12 head head-again">
                 <div className="row">
 
-                    <Link to="/">
+                    <Link onClick={() => { history.goBack() }}>
                         <img src={ARROW} id="arrow" />
                     </Link>
 
                     <div className="col-md-1">
 
-                        <Link to="/">
+                        <Link to='/'>
                             <img src={LOGO} id="logo" />
                         </Link>
 
@@ -172,7 +153,7 @@ export default function POSTYOURADS(props) {
                     <br></br>    <br></br>
 
                     <div className="center">
-                        <h3 id="h1"><b>POST YOUR AD</b></h3>
+                        <h3 id="h1"><b>EDIT YOUR AD</b></h3>
                     </div>
 
                     <div className="container-fluid col-md-10 bg-color-for-ads ">
@@ -210,14 +191,6 @@ export default function POSTYOURADS(props) {
                                 </div>
                             </div>
 
-
-                            {/* <div className="form-group row">
-                                <label htmlFor="p_file" className="col-sm-2 col-form-label">Image:</label>
-                                <div className="col-sm-10">
-                                    <input type="file" accept="image/png, image/jpeg" className="form-control-sm text-capitalize" id="inputEmail3" placeholder="Image url" multiple
-                                        value={image} onChange={(e) => { uploadImage(e) }} required />
-                                </div>
-                            </div> */}
                             <div className="form-group row">
                                 <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Image:</label>
                                 <div className="col-sm-10">
@@ -229,7 +202,7 @@ export default function POSTYOURADS(props) {
                             <div className="form-group row">
                                 <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Location:</label>
                                 <div className="col-sm-10">
-                                    <input type="text" className="form-control text-capitalize" id="inputPassword3" placeholder="Location" value={location} onChange={(e) => { setLocation(e.target.value) }} required />
+                                    <input type="text" className="form-control text-capitalize" id="inputPassword3" placeholder="Location" value={locations} onChange={(e) => { setLoacations(e.target.value) }} required />
                                 </div>
                             </div>
 
@@ -244,10 +217,13 @@ export default function POSTYOURADS(props) {
                             <div className="form-group row">
                                 <label htmlFor="inputPassword3" className="col-sm-2 col-form-label"></label>
                                 <div className="col-sm-10">
-                                    <Link onClick={()=>{history.goBack()}}>
-                                        <button type="button" className="btn btn-secondary  POSTADS" >CANCEL</button>
-                                    </Link>
+                                    {/* <Link to="/user-login/edit"> */}
+                                    <button type="button" onClick={() => { history.goBack() }} className="btn btn-secondary  POSTADS" >CANCEL</button>
+                                    {/* </Link> */}
                                     <button type="submit" className="btn btn-secondary float-right POSTADS" >POST AD</button>
+                                    {/* <Link to="/user-login/edit"> */}
+                                    {/* <button type="button" onClick={() => { Delete() }} className="btn btn-secondary center POSTADS" >DELETE AD</button> */}
+                                    {/* </Link> */}
 
                                 </div>
                             </div>
@@ -265,7 +241,4 @@ export default function POSTYOURADS(props) {
         </div>
     )
 }
-
-
-
 

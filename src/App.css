@@ -564,18 +564,19 @@ box-shadow: 0px 0px 5px grey;
    /* ITEMS DETAILS */
 
    .image-container{
-     cursor: pointer;
+     /* cursor: pointer; */
      /* position: absolute; */
      height: 100%;
      object-fit: contain;
      width: 100%;
      height: 480px;
-     cursor: pointer;
+     /* cursor: pointer; */
      display: block;
      justify-content: center;
      align-items: center;
      overflow: hidden;
      flex-direction: row;
+     padding: 0px 2px !important;
 
      font-weight: 400;
      font-style: normal;
@@ -684,7 +685,9 @@ font-weight: 600 !important;
     top: 16px;
 }
 
-
+.withwidth{
+    width:100% !important;
+}
 #card-featured{
     background-color: #ffce32;  
     font-size: 13px;
@@ -742,5 +745,92 @@ padding-left:15px ;
 .img-item-details{
     height: 100%;
     width: 100%;
-    /* object-fit:contain; */
+    object-fit:contain;  /*<== can control image through this*/
+    background-color: rgb(0, 0, 0);  
 }
+
+/* Carousal */ 
+/* Main carousal scrolable big image */
+/* .carousel .slide img {
+    max-height: 425px;   change this to whatever you want 
+    width: auto;
+    background-color: black;  
+    border-radius: 5px;
+} */
+
+/* carousal bottom thumbnails images */
+/* .carousel .thumb{
+    width:80px !important;
+    height:50px !important;
+    object-fit:contain !important;    
+    background-color: black;  
+    border-radius: 1px;
+} */
+
+/* all carousal bottom thumbnails images are inside this div */
+/* .carousel .thumbs-wrapper{
+    margin-top:1px !important; 
+    text-align:center;
+} */
+
+
+/*==== IMAGE GALLERY SLIDE CSS====*/
+ .image-gallery {
+    width: 100% !important;
+    height: 100% !important;
+    /* background-color: black !important;    */
+     /* object-fit: contain !important; */
+
+}
+.image-gallery-slide{
+    padding:0px !important;
+}
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
+    height: 50px !important;
+    width: 60px !important;
+}
+
+.image-gallery-slide img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 67.5vh !important;
+    object-fit: contain !important;
+    background-color: black !important;
+    /* border-radius: 5px !important; */
+}
+
+.image-gallery-thumbnail-image{
+     width: 80px !important;
+    height: 40px!important;
+    object-fit: contain!important;
+    background-color: black!important;
+    border: 1px solid #b9b9b9!important;
+    border-radius:3px !important;
+    box-shadow: 1px 1px 5px grey !important;
+} 
+/* .image-gallery-content .bottom .fullscreen{} */
+
+
+/* @media screen and (min-device-width: 914px) and (max-device-width: 1100px) { 
+    .image-gallery-slide img {
+        max-height: 67.5vh !important;
+        object-fit: cover!important;
+    }
+  } */
+  .image-gallery .fullscreen {
+    width: 100% !important;
+    height: auto !important;
+    margin-top:100px !important;
+    /* object-fit: contain    !important; */
+    /* object-fit: cover    !important; */
+}
+  .fullscreen img{
+    /* object-fit: contain    !important; */
+}
+@media screen and (min-width: 1000px) {
+    /* .image-gallery{
+        width: 100% !important;
+        height: auto !important;
+        max-height: 67.5vh !important;
+    } */
+  }

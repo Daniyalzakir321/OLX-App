@@ -9,6 +9,7 @@ export default function ITEMS() {
 
 
     const [itemData, setItemData] = useState([])
+    const [skeletonScreen, setSkeletonScreen] = useState(true)
 
     useEffect(() => {
         // FIREBASE ANALYTICS
@@ -29,6 +30,9 @@ export default function ITEMS() {
                 }))
 
             )
+            setTimeout(() => {
+                setSkeletonScreen(false)
+            }, 500);
         })
 
     }, [])
@@ -38,13 +42,13 @@ export default function ITEMS() {
         <div>
 
             <div className=" container-fluid " id="card-align">
-               { <p id="items">Fresh recommendations</p>}
+                {<p id="items">Fresh recommendations</p>}
                 <div className="col-md-12 container-fluid ml-3 ">
                     <div className="row">
                         {/* =============== */}
                         <ul className="ul-for-card">
                             {itemData.map((iData, index) => {
-                                return <DATA iData={iData} key={index} />
+                                return <DATA iData={iData} key={index} skeletonScreen={skeletonScreen} />
                             })}
                         </ul>
                     </div>
@@ -58,17 +62,17 @@ export default function ITEMS() {
 
 // ===========================================================================================
 
-function DATA({ iData }) {
-    const [skeletonScreen, setSkeletonScreen] = useState(true)
-    useEffect(() => {
-        setTimeout(() => {
-            setSkeletonScreen(false)
-        }, 3000);    
-    },[])
-   
+function DATA({ iData, skeletonScreen }) {
+    console.log('skeletonScreen', skeletonScreen)
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setSkeletonScreen(false)
+    //     }, 3000);    
+    // },[])
+
 
     return (<>
-        {/* {skeletonScreen
+        {skeletonScreen | iData.name
             ?
             <li>
                 <div className="card cccc" style={{ width: '18rem', }}>  <span id="featured">FEATURED</span><img className="heart" src={heart} alt="heart" />
@@ -79,14 +83,14 @@ function DATA({ iData }) {
                         <h5 className="card-title c-title"> <Skeleton /></h5>
                         <p className="card-text c-text" style={{ textTransform: 'capitalize' }} ><Skeleton /></p>
                         <div>
-                            <span className="float-left location" style={{ textTransform: 'Uppercase' }}><Skeleton height={10} width={50}/></span>
-                            <span className="float-right date"><Skeleton height={10} width={80}/></span>
+                            <span className="float-left location" style={{ textTransform: 'Uppercase' }}><Skeleton height={10} width={50} /></span>
+                            <span className="float-right date"><Skeleton height={10} width={80} /></span>
                         </div>
                     </div>
                 </div>
             </li>
 
-            : */}
+            :
 
             <li>
                 <Link to={`/item-details/${iData.c}/${iData.Id}`} >
@@ -106,8 +110,8 @@ function DATA({ iData }) {
                     </div>
                 </Link>
             </li>
-        {/*  }        Skeleton Screen                          */}
-         </>)
+        }        {/*   Skeleton Screen                          */}
+    </>)
 }
 
 

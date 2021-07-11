@@ -14,7 +14,7 @@ import SIGNIN from './Components/login-signup';
 import ITEMDETAILS from './Components/item-details';
 import USERLOGIN from './Components/user-login/user-login';
 import PAGENOTFOUND from './Components/page-not-found';
-
+import EDITYOURADS from './Components/edityourads';
 
 
 class APP extends React.Component {
@@ -55,6 +55,10 @@ class APP extends React.Component {
 
             <Route exact path="/user-login/:id" component={USERLOGIN} >
               <USERLOGIN />
+            </Route>
+
+            <Route exact path="/edit-your-ads/:id" component={EDITYOURADS} >
+              <EDITYOURADS/>
             </Route>
 
             <Route  component={PAGENOTFOUND} >

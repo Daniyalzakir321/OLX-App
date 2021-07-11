@@ -10,14 +10,20 @@ import magnifierwhite from './magnifier-white.svg';
 // import SEARCH from '../user-login-nav../user-login../search';
 // import { useSelector } from 'react-redux'
 import firebase from 'firebase/app';
-// import { db, fire } from '../user-login-nav/user';
-
+// import { fire,db } from '../user-login-nav../user-login/firebase';
 
 export default function NAVBARS({data}) {
 //     const data = useSelector(state => state.user)
 // console.log("USER=>>>>", data)
 
     const [serch, setSerch] = useState("")
+
+    const logout = () => {
+    firebase.auth().signOut()
+    window.location.reload();
+    console.log("logout")
+  }
+
     return (
         <div className="fixed-top">
 
@@ -67,9 +73,9 @@ export default function NAVBARS({data}) {
                             }
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{marginLeft:-30,marginTop:13, paddingRight:-20}}>
                                     <Link class="dropdown-item" to="/user-login"  >{data.UserName}</Link>
-                                    <Link class="dropdown-item" to="/user-login/setting" >Settings</Link>
                                     <Link class="dropdown-item" to="/user-login/edit" >Edit</Link>
-                                    <Link class="dropdown-item" onClick={()=> firebase.auth().signOut()} >LogOut</Link>
+                                    <Link class="dropdown-item" to="/user-login/setting" >Settings</Link>
+                                    <Link class="dropdown-item" to="/" onClick={()=> {logout()}} >Logout</Link>
                                 </div>
                             </div>
                         {/* </Link> */}

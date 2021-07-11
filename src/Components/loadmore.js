@@ -8,8 +8,6 @@ class LOADMORE extends React.Component {
                 <button type="button" class="loadmore">
                     <span>Load more</span>
                 </button>
-
-
                 </div>
             </div>
         )

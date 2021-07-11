@@ -12,13 +12,28 @@ import DEAR from '../images/dear.webp';
 import PHONE from '../images/phone.svg';
 import { db } from './firebase';
 import MapContainer from './map';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 const ITEMDETAILS = () => {
     // console.log('Start',LinkData)
     // console.log(LinkData[0])
-
     const [items, setItems] = useState([]);
     const { id, category } = useParams();
+    
+    const [i, setI] = useState([]);
+    const aa= JSON.stringify(items.Image)
+    // const mmm= aa.map((d,i)=>{ return <p key={i}>{d}</p>})
+
+    const images = [
+        {
+          original: items.Image,
+          thumbnail: items.Image,
+        },
+      ];
+ console.log('items.Image', aa)
 
     useEffect(() => {
         // RealTime Update
@@ -60,7 +75,31 @@ const ITEMDETAILS = () => {
 
                     <div className="col-md-8 image-container card-border margin">
                         <span id="card-featured">FEATURED</span>
-                        <img className="img-item-details" src={items.Image} alt="Card image cap" />
+                        {/* <img src={`data:image/jpeg;base64,${aa}`} className="img-item-details" /> */}
+
+                        <div>
+                        <ImageGallery  items={images} 
+                        thumbnailPosition='bottom'
+                        infinite={false}
+                        showPlayButton={false}
+                        showIndex={true}
+                        // showBullets={true}
+                         />
+                        </div>
+                        
+                        {/* <Carousel  autoFocus={true}>
+                            <div >
+                                <img src={items.Image} className="img-item-details" />
+                            </div>
+                            <div>
+                                <img src={items.Image} className="img-item-details " />
+                            </div>
+                            <div>
+                                <img src={items.Image} className="img-item-details" />
+                            </div>
+                        </Carousel> */}
+
+                        {/* <img className="img-item-details" src={items.Image} alt="Card image cap" /> */}
                     </div>
 
                     <div className="col-md-4">
@@ -72,7 +111,7 @@ const ITEMDETAILS = () => {
                                 <h5 className="card-title card-price">Rs {items.Price}</h5>
                                 <p className="card-text card-details"  >{items.Description}</p>
                                 <div>
-                                    <span className="float-left card-location" style={{textTransform:'uppercase'}}>{items.Location}</span>
+                                    <span className="float-left card-location" style={{ textTransform: 'uppercase' }}>{items.Location}</span>
                                     <span className="float-right card-date">{items.DateTime}</span>
                                 </div>
                             </div>
@@ -82,7 +121,7 @@ const ITEMDETAILS = () => {
 
                                 <div className="row">
                                     <img src={DEAR} id="user-img" />
-                                    <p className="seller-name">Daniyal Zakir</p>
+                                    <p className="seller-name">{items.UserName? items.UserName:'Daniyal Zakir'}</p>
                                     <br />
                                     <span className="Member-Since-November">Member Since November</span>
 
@@ -100,9 +139,9 @@ const ITEMDETAILS = () => {
                             <span>&nbsp;</span>
                             <div className="col-md-12 card-border">
                                 <h5 className="card-title Seller-Description">Seller Description</h5>
-                            <div>
-                                <MapContainer style={{height:"100%", width:'90%'}}/>
-                            </div>
+                                <div>
+                                    <MapContainer style={{ height: "100%", width: '90%' }} />
+                                </div>
                             </div>
 
                             <br />
