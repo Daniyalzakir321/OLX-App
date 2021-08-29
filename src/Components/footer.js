@@ -17,18 +17,18 @@ class FOOTER extends React.Component {
                     <div className="row">
                         <div className="col-md-2 pl-5">
                             <ul className="ul">
-                                <h6 className="h6">POPULAR&nbsp;CATEGORIES</h6>
+                                <h6 className="h6">POPULAR CATEGORIES</h6>
                                 <li> <a href="#?">Cars </a></li>
-                                <li> <a href="#?">Flats for rent </a></li>
+                                <li> <a href="#?">Flats&nbsp;for&nbsp;rent </a></li>
                                 <li> <a href="#?">Jobs </a></li>
-                                <li> <a href="#?">Mobile Phones </a></li>
+                                <li> <a href="#?">Mobile&nbsp;Phones </a></li>
                             </ul>
                         </div>
 
 
-                        <div className="col-md-2  ml-5">
+                        <div className="col-md-2  pl-5">
                             <ul className="">
-                                <h6 className="h6">TRENDING&nbsp;SEARCHES</h6>
+                                <h6 className="h6">TRENDING SEARCHES</h6>
                                 <li> <a href="#?">Bikes </a></li>
                                 <li> <a href="#?">Watches</a></li>
                                 <li> <a href="#?">Books</a></li>
@@ -37,13 +37,13 @@ class FOOTER extends React.Component {
                         </div>
 
 
-                        <div className="col-md-2 ml-5">
+                        <div className="col-md-2 pl-5">
                             <ul className="ul">
                                 <h6 className="h6">ABOUT US</h6>
-                                <li> <a href="#?">About OLX Group </a></li>
-                                <li> <a href="#?">OLX Blog </a></li>
-                                <li> <a href="#?">Contact Us</a></li>
-                                <li> <a href="#?">OLX for Businesses</a></li>
+                                <li> <a href="#?">About&nbsp;OLX&nbsp;Group </a></li>
+                                <li> <a href="#?">OLX&nbsp;Blog </a></li>
+                                <li> <a href="#?">Contact&nbsp;Us</a></li>
+                                <li> <a href="#?">OLX&nbsp;for&nbsp;Businesses</a></li>
                             </ul>
                         </div>
 
@@ -56,7 +56,7 @@ class FOOTER extends React.Component {
                                 <h6 className="h6">OLX</h6>
                                 <li> <a href="#?">Help</a></li>
                                 <li> <a href="#?">Sitemap</a></li>
-                                <li> <a href="#?">Legal&nbsp;&&nbsp;Privacy&nbsp;information</a></li>
+                                <li> <a href="#?">Legal&nbsp;&&nbsp;Privacy&nbsp;& information</a></li>
                             </ul>
                         </div>
 

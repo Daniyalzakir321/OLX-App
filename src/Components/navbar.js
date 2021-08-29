@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 // Files
 import App from '../App';
@@ -9,21 +9,38 @@ import magnifierblack from '../images/magnifier-black.svg';
 import magnifierwhite from '../images/magnifier-white.svg';
 import SEARCH from './search'
 import { Form } from 'react-bootstrap'
-import { fire } from './firebase'
+import { fire, auth } from './firebase'
 import { useSelector } from 'react-redux'
 
 export default function NAVBARS() {
   const data = useSelector(state => state.user)
 
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    auth.onAuthStateChanged(res => {
+      if (res) {
+        // fire.collection('users').doc(user.uid).get().then(snapshot=>{
+        //     setUser(snapshot.data().FullName);
+        // })
+        console.log('====>', res);
+        console.log('====>', res.uid);
+        setUser(res)
+      }
+      else {
+        setUser(null);
+      }
+    })
+  }, [])
+  console.log('====>', user);
 
   const [serch, setSerch] = useState("")
-
   const logout = () => {
     fire.auth().signOut()
-    window.location.reload();
+    // window.location.reload();
     console.log("logout")
   }
 
+  
   return (
     <div className="fixed-top">
 
@@ -61,11 +78,12 @@ export default function NAVBARS() {
           </div>
 
 
-          <div className="login Header__Login col-md-1" >
+          {/* <div className="login Header__Login col-md-1" >
             {(!data.UserPhoto) ? <Link to="/login-signup" className="log-link"><p id="login" >Login</p></Link>
               :
               <div class="dropdown">
-                {(data.UserPhoto) ? <img src={data.UserPhoto} data-toggle="dropdown" style={{ cursor: 'pointer', height: 45, borderRadius: 50 }} />
+                {(data.UserPhoto) ? <img src={data.UserPhoto} data-toggle="dropdown" 
+                style={{ cursor: 'pointer', height: 45, borderRadius: 50 }} />
                   :
                   <Link to="/login-signup" className="log-link">
                     <p id="login" >Login</p>
@@ -80,8 +98,30 @@ export default function NAVBARS() {
                 </div>
               </div>
             }
-          </div>
+          </div> */}
 
+          {/* FIREBASE AUTH */}
+          <div className="login Header__Login col-md-1" >
+            {(!user) ? <Link to="/login-signup" className="log-link"><p id="login" >Login</p></Link>
+              :
+              <div class="dropdown">
+                {(user) ? <img src={user.photoURL?user.photoURL:"https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"} data-toggle="dropdown"
+                  style={{ cursor: 'pointer', height: 45, borderRadius: 50 }} />
+                  :
+                  <Link to="/login-signup" className="log-link">
+                    <p id="login" >Login</p>
+                  </Link>
+                }
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style={{ marginLeft: -30, marginTop: 13, paddingRight: -20 }}>
+                  <Link class="dropdown-item" to="/user-login"  >{user.displayName?user.displayName:user.email}</Link>
+                  <Link class="dropdown-item" to="/user-login/edit" >Edit</Link>
+                  <Link class="dropdown-item" to="/user-login/setting" >Settings</Link>
+                  <Link class="dropdown-item" onClick={() => logout()} >Logout</Link>
+
+                </div>
+              </div>
+            }
+          </div>
 
 
           <div className="Header__Sell col-md-1">

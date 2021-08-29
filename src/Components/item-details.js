@@ -10,7 +10,7 @@ import FOOTERBOTTOM from './footerbottom';
 import ITEMS from './items';
 import DEAR from '../images/dear.webp';
 import PHONE from '../images/phone.svg';
-import { db } from './firebase';
+import { db, storage } from './firebase';
 import MapContainer from './map';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -18,29 +18,86 @@ import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
 const ITEMDETAILS = () => {
-    // console.log('Start',LinkData)
-    // console.log(LinkData[0])
+
     const [items, setItems] = useState([]);
     const { id, category } = useParams();
-    
-    const [i, setI] = useState([]);
-    const aa= JSON.stringify(items.Image)
-    // const mmm= aa.map((d,i)=>{ return <p key={i}>{d}</p>})
+    const {Image}=items
+    console.log('====================',Image)
 
-    const images = [
-        {
-          original: items.Image,
-          thumbnail: items.Image,
-        },
-      ];
- console.log('items.Image', aa)
+    // coverting firebase array to obj in order to render data in front-end
+    const obj = Object.assign({},Image)
+    // console.log('====================',obj)
+    console.log('====================',obj.[0])
+       
+        const pp=[{
+            original: items.Image,
+            thumbnail: items.Image,
+        }]
 
+        const ot=(d)=>{
+            return {
+            original: `data:image/jpeg;base64,${obj.[d]}`,
+            thumbnail: `data:image/jpeg;base64,${obj.[d]}`,
+            }
+        }
+        const oo=  [
+            ot(0),
+            ot(1),
+            ot(2),
+            ot(3),
+            ot(4),
+      ]
+     
+        const images = obj.[0]=='h' && obj.[1]=='t' && obj.[3]=='p' && items.Image? pp:oo   
+        
+        // const oo=  [{
+        //     original: `data:image/jpeg;base64,${obj.[0]}`,
+        //     thumbnail: `data:image/jpeg;base64,${obj.[0]}`,
+        // },
+        // {
+        //     original: `data:image/jpeg;base64,${obj.[1]}`,
+        //     thumbnail: `data:image/jpeg;base64,${obj.[1]}`,
+        // },
+        // {
+        //     original: `data:image/jpeg;base64,${obj.[2]}`,
+        //     thumbnail: `data:image/jpeg;base64,${obj.[2]}`,
+        // }]
+    // const images = [
+    //     {
+    //       original: obj.[0]=='h'?items.Image:`data:image/jpeg;base64,${obj.[0]}`,
+    //       thumbnail: obj.[0]=='h'?items.Image:`data:image/jpeg;base64,${obj.[0]}`,
+    //     },
+    //   ]
+
+    // const images = [
+    //     {
+    //       original: items.Image,
+    //       thumbnail: items.Image,
+    //     },
+    //   ];
+
+ 
     useEffect(() => {
         // RealTime Update
-        db.collection("POST-YOUR-ADS").doc(id).onSnapshot(snapshot => (
+        db.collection("POST-YOUR-ADS").doc(id).onSnapshot(snapshot => {
             setItems(snapshot.data())
-        ))
-        // No Real Time Update
+          
+            // storage.ref(`${id}/`)
+            // .getDownloadURL()
+            // .then((res) => {
+            //     setI(res)
+            // });
+                // storage.ref(`${id}/`).listAll().then( function (result){
+                //     result.items.forEach( function (res) {
+                //       console.log("image reference" + res.toString())
+                //         setI(res.toString())
+                //     });
+                //    }).catch((error)=> {
+                //      console.log(error);
+                //    });
+        })
+         
+                // No Real Time Update
         // db.collection("POST-YOUR-ADS").doc(id).get()
         //     .then(function (doc) {
         //         setItems({
@@ -55,7 +112,7 @@ const ITEMDETAILS = () => {
         //         })
         //     })
     }, [])
-
+    // console.log('Storage==', i)
     // console.log("Params===", id)
     // console.log("Params===", items)
     return (
@@ -72,11 +129,8 @@ const ITEMDETAILS = () => {
             <div className="col-md-11 container">
                 <div className="row margin">
 
-
                     <div className="col-md-8 image-container card-border margin">
                         <span id="card-featured">FEATURED</span>
-                        {/* <img src={`data:image/jpeg;base64,${aa}`} className="img-item-details" /> */}
-
                         <div>
                         <ImageGallery  items={images} 
                         thumbnailPosition='bottom'
@@ -140,8 +194,13 @@ const ITEMDETAILS = () => {
                             <div className="col-md-12 card-border">
                                 <h5 className="card-title Seller-Description">Seller Description</h5>
                                 <div>
-                                    <MapContainer style={{ height: "100%", width: '90%' }} />
-                                </div>
+                                    {/* <MapContainer 
+                                    Longitude={items.Longitude}
+                                    Latitude={items.Latitude}  
+                                     style={{ height: "100%", width: '90%' }} /> */}
+                                    <iframe name="gMap" width="100%" height="100%" frameborder="0" 
+                                    src={`https://www.google.com/maps/embed/v1/place?q=${items.Latitude},${items.Longitude}&zoom=18&key=AIzaSyDBaX7bQldoyozJraanMGzSEdXx4Qaikb4`} allowfullscreen></iframe>
+                                </div>                               
                             </div>
 
                             <br />
